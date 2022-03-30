@@ -2,35 +2,32 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
 from PIL import Image, ImageTk
+# import combo_box as CB
 import os
 
-# DEFINING
-script_dir = os.path.dirname(__file__)
-rel_path_IMAGE = ".\\JIIT.png"
-rel_path_ICON = ".\\JIIT.ico"
-abs_file_path_IMAGE = os.path.join(script_dir, rel_path_IMAGE)
-abs_file_path_ICON = os.path.join(script_dir, rel_path_ICON)
-
-# TKINTER
 root = Tk()
 root.title("JIIT MENU")
-root.iconbitmap(abs_file_path_ICON)
+root.iconbitmap('Y:\MinorProject\download.ico')
 root.geometry('900x600')
 root.configure(bg='#000000')
 def Selected_File():
     selected_file = filedialog.askopenfilename(initialdir='C://', title='Select a file', filetypes = (("Text files", "*.docx*"),))
     print(selected_file)
 
+def combo_execute():
+    root.destroy()
+    import combo_box
 
-
-# IMAGE DISPLAY
-image = Image.open(abs_file_path_IMAGE)
+script_dir = os.path.dirname(__file__)
+rel_path = ".\\JIIT.png"
+abs_file_path = os.path.join(script_dir, rel_path)
+image = Image.open(abs_file_path)
 photo = ImageTk.PhotoImage(image)
+
 label = Label(root, image = photo, border='0')
 label.image = photo
 label.grid(row=1)
 
-# ADDING BUTTONS
 but10=  ttk.Button(root, text='Subject Closing Report', command=Selected_File, width='20')
 but10.grid(row='2',column='1', ipadx='10', ipady='10')
 
@@ -52,7 +49,7 @@ but21.grid(row='3',column='2', ipadx='10', ipady='10')
 but22= ttk.Button(root, text='T2 Question Paper', command=Selected_File, width='20')
 but22.grid(row='3',column='3', ipadx='10', ipady='10')
 
-but23= ttk.Button(root, text='Attainment T1', command=Selected_File, width='20')
+but23= ttk.Button(root, text='Attainment T1', command=combo_execute, width='20')
 but23.grid(row='3',column='4', ipadx='10', ipady='10')
 
 but30= ttk.Button(root, text='T1 Question Paper', command=Selected_File, width='20')
@@ -90,5 +87,7 @@ but102.grid(row='6',column='3', ipadx='10', ipady='10')
 
 but103= ttk.Button(root, text='Mission Vission JIIT', command=Selected_File, width='20')
 but103.grid(row='6',column='4', ipadx='10', ipady='10')
+
+
 
 root.mainloop()
