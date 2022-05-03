@@ -21,6 +21,7 @@ def json_maker(data):
     with open("details.json", "w") as outfile:
         outfile.write(json_object)
 
+# For getting values from the entries and doing furthur operations
 def get_value():
     Dept_name = dept_name.get()
     Academic_Year = Aca_year.get()
@@ -62,18 +63,15 @@ def get_value():
 def radio_get():
     global radioValue
     radioValue = str(v.get())
-    # WE.xlwt_merge_write(sheet, 2, 2, 2, 3, f'Semester:{radioValue}')
     print(radioValue)
 
+# Creating a radio button 
 def radio(root, radioOptions):
     global v
     v = StringVar(root, "1")
     
-    # Dictionary to create multiple buttons
     values = radioOptions
 
-    # Loop is used to create multiple Radiobuttons
-    # rather than creating each button separately
     for (text, value) in values.items():
         Radiobutton(root, text = text, variable = v,
                     value = value, indicator = 0,
