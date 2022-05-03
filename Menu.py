@@ -7,8 +7,11 @@ import os
 
 root = Tk()
 root.title("JIIT MENU")
-root.iconbitmap('Y:\MinorProject\download.ico')
-root.geometry('900x600')
+
+
+print(os.getcwd())
+# root.iconbitmap(f"{os.getcwd()}/download.ico")
+root.geometry('1200x600')
 root.configure(bg='#000000')
 def Selected_File():
     selected_file = filedialog.askopenfilename(initialdir='C://', title='Select a file', filetypes = (("Text files", "*.docx*"),))
@@ -16,10 +19,10 @@ def Selected_File():
 
 def combo_execute():
     root.destroy()
-    import combo_box
+    import Attainment
 
 script_dir = os.path.dirname(__file__)
-rel_path = ".\\JIIT.png"
+rel_path = "JIIT.png"
 abs_file_path = os.path.join(script_dir, rel_path)
 image = Image.open(abs_file_path)
 photo = ImageTk.PhotoImage(image)

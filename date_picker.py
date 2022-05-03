@@ -6,7 +6,7 @@ def datepicker():
 	# Create Object
 	root = Tk()
 	root.title('Select a date')
-	root.iconbitmap('download.ico')
+	# root.iconbitmap('download.ico')
 	# Set geometry
 	root.geometry("270x350")
 
