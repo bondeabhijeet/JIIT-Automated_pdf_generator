@@ -1,8 +1,1 @@
-{
-    "dept_name": "",
-    "Acad_yar": " (Odd Semester)",
-    "Prog_name": "",
-    "Sem": "",
-    "Course_name": "",
-    "COS": []
-}
+{"dept_name": "CSE", "Acad_yar": "2021-22 (Odd Semester)", "Prog_name": "BTECH", "Sem": "VI", "Course_name": "CNIOT", "T2_date": "5/30/22", "T3_date": "5/17/22", "COS": [{"0": ["f", "g"], "1": ["h", "r"], "2": ["t", "y"], "3": ["u", "i"], "4": ["o", "p"], "5": ["a", "s"]}], "Course_details": {"Course_CODE": "well", "Course_Cordinator": "OKKK", "NBA_CODE": "LOL"}}

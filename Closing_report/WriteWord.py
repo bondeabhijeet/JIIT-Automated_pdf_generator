@@ -29,4 +29,4 @@ title_style = y.style
 title_style.font.name = "Times New Roman"
 
 # Now save the document to a location
-doc.save('../Closing_report/gfg.docx')
+doc.save('gfg.docx')
