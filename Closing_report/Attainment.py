@@ -1,6 +1,7 @@
 import json
 import WriteExcel as WE
 import xlwt
+import os
 
 def attain_ment():
     with open('details.json', 'r+') as f:
@@ -36,7 +37,7 @@ def attain_ment():
     WE.xlwt_merge_write(sheet, 8, 9, 5, 7, f'Branch: {Branch}', '')
     WE.xlwt_merge_write(sheet, 3, 3, 5, 7, f'Examination: {Examination}', '')
     
-    WE.xlwt_merge_write(sheet, 18, 19, 0, 0, 'NOTE:', style)
+    WE.xlwt_merge_write(sheet, 4, 5, 12, 12, 'NOTE:', style)
     style1 = xlwt.XFStyle()
     font = xlwt.Font()
     font.bold = True
@@ -46,17 +47,40 @@ def attain_ment():
     borders.left = xlwt.Borders.THICK
     borders.bottom = xlwt.Borders.THICK
     style1.borders = borders
-    WE.xlwt_merge_write(sheet, 21, 21, 0, 3, f'% of Students Scored >= Target %', style1)
-    WE.xlwt_merge_write(sheet, 22, 22, 0, 3, f'>= 80%', '')
-    WE.xlwt_merge_write(sheet, 23, 23, 0, 3, f'>= 70%', '')
-    WE.xlwt_merge_write(sheet, 24, 24, 0, 3, f'60%', '')
-    WE.xlwt_merge_write(sheet, 25, 25, 0, 3, f'>=60%', '')
 
-    WE.xlwt_merge_write(sheet, 21, 21, 4, 5, f'Attainment Level', style1)
-    WE.xlwt_merge_write(sheet, 22, 22, 4, 5, f'3', '')
-    WE.xlwt_merge_write(sheet, 23, 23, 4, 5, f'2', '')
-    WE.xlwt_merge_write(sheet, 24, 24, 4, 5, f'1', '')
-    WE.xlwt_merge_write(sheet, 25, 25, 4, 5, f'0', '')
+    style2 = xlwt.XFStyle()
+    font = xlwt.Font()
+    font.bold = True
+    style2.font = font
+    style2.font.height = 200
+    borders = xlwt.Borders()
+    borders.left = xlwt.Borders.THICK
+    borders.top = xlwt.Borders.THICK
+    borders.right = xlwt.Borders.THICK
+    borders.bottom = xlwt.Borders.THICK
+    style2.borders = borders
+
+    style3 = xlwt.XFStyle()
+    font = xlwt.Font()
+    font.bold = False
+    style3.font = font
+    style3.font.height = 200
+    borders = xlwt.Borders()
+    borders.left = xlwt.Borders.THICK
+    borders.right = xlwt.Borders.THICK
+    style3.borders = borders
+
+    WE.xlwt_merge_write(sheet, 6, 6, 12, 15, f'% of Students Scored >= Target %', style2)
+    WE.xlwt_merge_write(sheet, 7, 7, 12, 15, f'                               >= 80%', style3)
+    WE.xlwt_merge_write(sheet, 8, 8, 12, 15, f'                               >= 70%', style3)
+    WE.xlwt_merge_write(sheet, 9, 9, 12, 15, f'                                  60%', style3)
+    WE.xlwt_merge_write(sheet, 10, 10, 12, 15, f'                               >=60%', style3)
+
+    WE.xlwt_merge_write(sheet, 6, 6, 16, 17, f'Attainment Level', style2)
+    WE.xlwt_merge_write(sheet, 7, 7, 16, 17, f'                  3', style3)
+    WE.xlwt_merge_write(sheet, 8, 8, 16, 17, f'                  2', style3)
+    WE.xlwt_merge_write(sheet, 9, 9, 16, 17, f'                  1', style3)
+    WE.xlwt_merge_write(sheet, 10, 10, 16, 17, f'                  0', style3)
 
 
 
@@ -64,7 +88,7 @@ def attain_ment():
     style = xlwt.easyxf()
     style.font.colour_index = xlwt.Style.colour_map['red']
     style.font.height = 302
-    sheet.write_merge(18, 19, 1, 2, f"Target % is 50 %", style=style)
+    sheet.write_merge(4, 5, 13, 14, f"Target % is 50 %", style=style)
     # sheet.write(10, 11, 'Some text', style)
 
     # WE.xlwt_merge_write(sheet, 19, 20, 0, 1, 'NOTE:', style)
@@ -90,4 +114,5 @@ def attain_ment():
 
     
 attain_ment()
+os.system("libreoffice '7. Attainment T2.xls'")
 

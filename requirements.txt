@@ -1,0 +1,6 @@
+docxcompose
+tkcalendar
+python-docx
+tk
+xlwt
+pandas
