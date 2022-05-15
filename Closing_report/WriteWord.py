@@ -39,8 +39,8 @@ para.font.bold = True
 
 doc.add_heading('At the completion of the course, students will be able to\n', 3)
 
-def table_maker(doc):
-    table = doc.add_table(rows=4, cols=3)
+def table_maker(doc, COS_all):
+    table = doc.add_table(rows=1, cols=3)
 
     hdr_cells = table.rows[0].cells
     run = hdr_cells[0].paragraphs[0].add_run('S.No')
@@ -55,6 +55,17 @@ def table_maker(doc):
     run = hdr_cells[2].paragraphs[0].add_run('COGNITIVE LEVELS')
     run.bold = True
 
+    for i in COS_all:
+        SNO = i
+        Course_outcome = COS_all[i][0]
+        Cognitive_level = COS_all[i][1]
+
+        hdr_cells = table.add_row().cells
+
+        hdr_cells[0].text = str(SNO)
+        hdr_cells[1].text = str(Course_outcome)
+        hdr_cells[2].text = str(Cognitive_level)
+
     table.allow_autofit = False
     for cell in table.columns[0].cells:
         cell.width = Inches(1)
@@ -62,7 +73,11 @@ def table_maker(doc):
         cell.width = Inches(3.5)
     for cell in table.columns[2].cells:
         cell.width = Inches(2)
-table_maker(doc)
+    
+        
+COS_all = json_data['COS'][0]
+rows = len(COS_all)
+table_maker(doc, COS_all)
 
 para = doc.add_paragraph().add_run('\nCO-PO and CO-PSO Mapping:')
 para.font.size = Pt(12)

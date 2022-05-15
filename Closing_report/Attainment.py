@@ -89,6 +89,35 @@ def attain_ment():
     style.font.colour_index = xlwt.Style.colour_map['red']
     style.font.height = 302
     sheet.write_merge(4, 5, 13, 14, f"Target % is 50 %", style=style)
+
+    with open("details.json", 'r') as f:
+        details = json.load(f)
+
+    WE.xlwt_merge_write(sheet, 15, 16, 0, 0, f'S.No', style2)
+    WE.xlwt_merge_write(sheet, 15, 16, 1, 2, f'Enroll', style2)
+    WE.xlwt_merge_write(sheet, 15, 16, 3, 5, f'Name', style2)
+    WE.xlwt_merge_write(sheet, 15, 16, 6, 6, f'T2', style2)
+    # print(len(details["COS"][0]))
+    lim_col_no = 7
+    for j in range(len(details["COS"][0])):
+        col_no = lim_col_no + j
+        WE.xlwt_merge_write(sheet, 15, 16, col_no, col_no, f'CO{j+1}', style2)
+
+    
+    lim_row_no = 17
+    with open("student_details.json", 'r') as f:
+        student_list = json.load(f)
+
+    for i in range(len(student_list["Rollno."])):
+        row_no = lim_row_no + i
+        WE.xlwt_merge_write(sheet, row_no, row_no, 0, 0, f'{i+1}', style3)
+        WE.xlwt_merge_write(sheet, row_no, row_no, 1, 2, f'{student_list["Rollno."][f"{i}"]}', style3)
+        WE.xlwt_merge_write(sheet, row_no, row_no, 3, 5, f'{student_list["Name"][f"{i}"]}', style3)
+    
+    # WE.xlwt_merge_write(sheet, row_no, row_no, 3, 5, f'{student_list["Name"][f"{i}"]}', style3)
+
+        # print(student_list["Rollno."][f"{i}"])
+
     # sheet.write(10, 11, 'Some text', style)
 
     # WE.xlwt_merge_write(sheet, 19, 20, 0, 1, 'NOTE:', style)
