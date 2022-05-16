@@ -143,8 +143,8 @@ def attain_ment():
     col_no = lim_col_no - 1
     for i in final_values:
         col_no = col_no + 1
-        print(final_values[i])
-        print(i)
+        # print(final_values[i])
+        # print(i)
         WE.xlwt_merge_write(sheet, 15, 16, col_no, col_no, f"{i} ({final_values[i]})", style2)
 
         # print(student_list["Rollno."][f"{i}"])
