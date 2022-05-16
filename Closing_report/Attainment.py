@@ -82,9 +82,6 @@ def attain_ment():
     WE.xlwt_merge_write(sheet, 9, 9, 16, 17, f'                  1', style3)
     WE.xlwt_merge_write(sheet, 10, 10, 16, 17, f'                  0', style3)
 
-
-
-
     style = xlwt.easyxf()
     style.font.colour_index = xlwt.Style.colour_map['red']
     style.font.height = 302
