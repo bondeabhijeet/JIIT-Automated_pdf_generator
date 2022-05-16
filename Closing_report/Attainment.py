@@ -96,14 +96,13 @@ def attain_ment():
     WE.xlwt_merge_write(sheet, 15, 16, 0, 0, f'S.No', style2)
     WE.xlwt_merge_write(sheet, 15, 16, 1, 2, f'Enroll', style2)
     WE.xlwt_merge_write(sheet, 15, 16, 3, 5, f'Name', style2)
-    WE.xlwt_merge_write(sheet, 15, 16, 6, 6, f'T2', style2)
-    # print(len(details["COS"][0]))
-    lim_col_no = 7
-    for j in range(len(details["COS"][0])):
-        col_no = lim_col_no + j
-        WE.xlwt_merge_write(sheet, 15, 16, col_no, col_no, f'CO{j+1}', style2)
+    WE.xlwt_merge_write(sheet, 15, 16, 6, 6, f'T2 (20)', style2)
 
-    
+    # lim_col_no = 7
+    # for j in range(len(details["COS"][0])):
+    #     col_no = lim_col_no + j
+    #     WE.xlwt_merge_write(sheet, 15, 16, col_no, col_no, f'CO{j+1}', style2)
+
     lim_row_no = 17
     with open("student_details.json", 'r') as f:
         student_list = json.load(f)
@@ -114,7 +113,42 @@ def attain_ment():
         WE.xlwt_merge_write(sheet, row_no, row_no, 1, 2, f'{student_list["Rollno."][f"{i}"]}', style3)
         WE.xlwt_merge_write(sheet, row_no, row_no, 3, 5, f'{student_list["Name"][f"{i}"]}', style3)
     
-    # WE.xlwt_merge_write(sheet, row_no, row_no, 3, 5, f'{student_list["Name"][f"{i}"]}', style3)
+    lim_col_no = 7
+
+    CO = []
+    frequency = {}
+
+    for item in details["CO_quest_map"]:
+        CO.append(item[0])
+
+    for item in CO:
+        if item in frequency:
+            frequency[item] += 1
+        else:
+            frequency[item] = 1
+    # print(frequency)
+
+    final_values = {}
+    for j in frequency:
+        value = 0
+        for i in details["CO_quest_map"]:
+            if j == i[0]:
+                value = value + int(i[1])
+        final_values[f"{j}"] = value
+
+    print(final_values)
+
+        # print(j)
+        # for i in range(len(frequency)):
+        #     if frequency["CO_quest_map"][2]:
+        # col_no = lim_col_no + j
+        # WE.xlwt_merge_write(sheet, 15, 16, col_no, col_no, f'CO{j+1}', style2)
+    col_no = lim_col_no - 1
+    for i in final_values:
+        col_no = col_no + 1
+        print(final_values[i])
+        print(i)
+        WE.xlwt_merge_write(sheet, 15, 16, col_no, col_no, f"{i} ({final_values[i]})", style2)
 
         # print(student_list["Rollno."][f"{i}"])
 
@@ -137,11 +171,6 @@ def attain_ment():
     
     WE.xlwt_save(book)
 
-
-    print(Academic_Year, Course_Cordinator, Course_Code, Course_name, NBA_Code)
-
-
-    
 attain_ment()
 os.system("libreoffice '7. Attainment T2.xls'")
 

@@ -21,7 +21,7 @@ def get_value_q():
 root1 = tk.Tk()
 root1.title("No of questions")
 root1.geometry("400x400")
-lab = ttk.Label(root1, text="Enter the number of questions (integer)")
+lab = ttk.Label(root1, text="Enter the number of questions in T2 (integer)")
 lab.pack(fill=tk.X, padx=5, pady=5)
 
 entr = ttk.Entry(root1)

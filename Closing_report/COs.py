@@ -22,7 +22,7 @@ def save_cos():
     for i in range(len(my_entries)):
         entry = my_entries[i]
         entry_cog = cognitive_levels[i]
-        entry_values[f'{i}'] = [entry.get(), entry_cog.get()]
+        entry_values[f'CO {i+1}'] = [entry.get(), entry_cog.get()]
 
     write_json(entry_values)
     root1.destroy()
