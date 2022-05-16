@@ -16,7 +16,7 @@ def Selected_File():
     print(selected_file)
     files.append(selected_file)
     
-    composed = "/home/kali/Downloads/composed.docx"
+    composed = "/home/kali/JIIT-Automated_pdf_generator/Closing_report/composed.docx"
 
     print(files)
     result = Document(files[0])
